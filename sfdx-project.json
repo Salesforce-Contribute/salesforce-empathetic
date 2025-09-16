@@ -5,7 +5,8 @@
       "default": true,
       "package": "AppPackage",
       "versionName": "ver 0.1",
-      "versionNumber": "0.1.0.NEXT",
+      "ancestorId": "04tIg0000000SfCIAU",
+      "versionNumber": "0.2.0.NEXT",
       "versionDescription": ""
     }
   ],
@@ -15,6 +16,7 @@
   "sourceApiVersion": "64.0",
   "packageAliases": {
     "AppPackage": "0HoIg000000PAudKAG",
-    "AppPackage@0.1.0-1": "04tIg0000000SfCIAU"
+    "AppPackage@0.1.0-1": "04tIg0000000SfCIAU",
+    "AppPackage@0.2.0-1": "04tIg0000000SfHIAU"
   }
 }
