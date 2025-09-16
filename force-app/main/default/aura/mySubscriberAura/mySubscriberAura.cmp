@@ -1,0 +1,14 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+
+	<lightning:messageChannel type="messageService__c" onMessage="{!c.handleChanged}" scope="APPLICATION" aura:id="messageChannel"/>
+    <aura:attribute name="recordValue" type="String"/>
+
+    <lightning:card title="LMS Subscriber">
+        <lightning:layout class="slds-p-around_x-small">
+            <lightning:layoutItem size="12">
+                	<lightning:textarea name="textarea" readonly="true" value="{!v.recordValue}" row="4" label="Recieved Message" />
+                </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+    
+</aura:component>

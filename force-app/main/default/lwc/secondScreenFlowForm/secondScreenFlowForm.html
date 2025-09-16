@@ -1,0 +1,46 @@
+<template>
+  <lightning-card variant="narrow">
+    <div slot="title">
+      Flow Navigation
+    </div>
+    <div slot="footer">
+      <!-- Show button only when action is available -->
+      <lightning-button
+        if:true={isPreviousAction}
+        class="slds-var-p-around_xx-small"
+        label="Previous"
+        onclick={navigatePreviousFlowScreen}
+      ></lightning-button>
+
+      <!-- Show button only when action is available -->
+      <lightning-button
+        if:true={isNextAction}
+        class="slds-var-p-around_xx-small"
+        variant="brand"
+        label="Next"
+        onclick={navigateNextFlowScreen}
+      ></lightning-button>
+
+      <!-- Show button only when action is available -->
+      <lightning-button
+        if:true={isPauseAction}
+        class="slds-var-p-around_xx-small"
+        label="Pause"
+        onclick={requestPauseFlow}
+      ></lightning-button>
+
+      <!-- Show button only when action is available -->
+      <lightning-button
+        if:true={isFinishAction}
+        class="slds-var-p-around_xx-small"
+        variant="success"
+        label="Finish"
+        onclick={requestFinishFlow}
+      ></lightning-button>
+    </div>
+
+    <div class="slds-var-p-around_small">
+      Add Component Content here
+    </div>
+  </lightning-card>
+</template>

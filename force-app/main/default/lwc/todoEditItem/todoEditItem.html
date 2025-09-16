@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-box slds-m-around_xx-small" style="background-color: white;">
+        <p class="slds-p-horizontal_small">
+            <lightning-combobox name="status" label="Task Status" value={statusValue} placeholder="Status" options={statusOptions} onchange={selectStatus}></lightning-combobox>
+            <lightning-textarea name="taskName" label="Task Description" value={descriptionValue} placeholder="Description..." onchange={descriptionInputHandler}></lightning-textarea>
+        </p>
+        
+        <div class="slds-clearfix">
+            <div class="slds-float_right slds-m-right_small slds-m-top_small">
+                <lightning-button variant="brand-outline"  class="slds-m-right_xx-small" label="Update" onclick={updateTaskHandler}></lightning-button>
+                <lightning-button variant="destructive-text" label="Cancel" onclick={cancelTaskHandler}></lightning-button>
+            </div>
+        </div>
+    </div>
+</template>

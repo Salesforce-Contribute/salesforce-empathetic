@@ -1,0 +1,14 @@
+<!-- Part 1 -->
+<template>
+    <!-- Only use direct DOM manipulation if it can’t be expressed via the template -->
+    <lightning-card class="slds-p-around_small">
+        <lightning-input type="number" message-when-bad-input={badNumericInput} value={digits} onblur={blurNumberHandler}></lightning-input>
+        <lightning-input type="date"></lightning-input>
+        <input type="text" onchange={handleInputChange} />
+        <div style={divStyle}>Hello world</div>
+
+        <lightning-button label="Submit" onclick={submitHandler}></lightning-button>
+    </lightning-card>
+
+    
+</template>

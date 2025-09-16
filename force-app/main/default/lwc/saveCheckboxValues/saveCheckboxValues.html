@@ -1,0 +1,44 @@
+<template>
+        <table class="slds-table slds-table_cell-buffer slds-table_col-bordered" border="1" width="100%">
+         
+          <thead>
+             <tr class="slds-line-height_reset">
+               <td>
+                 <lightning-input type="checkbox" onchange={handleAllChange}></lightning-input>
+               </td>
+               <td style="font-weight:bold">Account Name</td>
+               <td style="font-weight:bold">Phone</td>
+             </tr>
+          </thead>
+          <template for:each={accList} for:item="acc">
+            <tr key={acc.id} class="slds-hint-parent">
+             <td>
+                <lightning-input 
+                type="checkbox" 
+                checked={acc.isSelected}
+                onchange={handleCheckChange} 
+                 value={acc.index}
+                 >
+                </lightning-input>
+             </td>
+             <td>
+        <lightning-input 
+            type="text" 
+            value={acc.AccountName}
+        >
+            ></lightning-input>
+        </td>
+        <td>
+        <lightning-input 
+        type="tel" 
+        value={acc.Phone}
+        onchange = {duplicate}
+      ></lightning-input>
+    </td>
+            </tr>
+          </template>
+     </table>
+     <br/>
+     <lightning-button label="Get Selected Accounts" onclick={getSelectedAccounts} variant="brand"></lightning-button>
+    
+</template>

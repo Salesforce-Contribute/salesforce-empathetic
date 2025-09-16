@@ -1,0 +1,15 @@
+table thead th {
+  background-color: rgb(255, 223, 127) !important;
+  color:black;
+}
+
+table tr.slds-hint-parent:hover {
+  background-color: antiquewhite !important;
+}
+
+.slds-yellow {
+  color:rgb(255, 171, 15);
+}
+.slds-black {
+  color: black;
+}

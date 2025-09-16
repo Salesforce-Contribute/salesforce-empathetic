@@ -1,0 +1,52 @@
+<!-- <template>
+    <lightning-card title="PDF Viewer">
+        <lightning-datatable key-field="id" data={pdfList} columns={columns}></lightning-datatable>
+    </lightning-card>
+</template> -->
+
+<template>
+    <lightning-card title="PDF Viewer" icon-name="custom:custom1">
+
+        <lightning-layout class="slds-p-around_medium" vertical-align="center" multiple-rows="true">
+            <!-- <lightning-layout-item size="12" mult>
+                <div style="width: 100%">
+                    <lightning-datatable columns={columns} data={pdfDocList} onrowaction={handleRowAction} key-field="Id" hide-checkbox-column="true"></lightning-datatable>
+                </div>
+            </lightning-layout-item> -->
+            <lightning-layout-item size="12">
+                <div style="width: 100%">
+                    <lightning-datatable columns={fileColumns} data={pdfFileList} onrowaction={handleRowActionForFile} key-field="Id" hide-checkbox-column="true"></lightning-datatable>
+                </div>
+            </lightning-layout-item>
+            <!--lightning-layout-item>
+            <table id="demo" lwc:ref="myDiv">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Total item</th>
+                            <th>Per item cost</th>
+                            <th>Bill</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={data} for:item="item">
+                            <tr key={item.id}>
+                                <td style='font-weight:700;'>{item.name}</td>
+                                <td style='font-weight:700;'>{item.dateofbirth}</td>
+                                <td style='font-weight:700;'>{item.totalitem}</td>
+                                <td style='font-weight:700;'>{item.itempercost}</td>
+                                <td style='font-weight:700;'>{item.bill}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+			    </table>
+        </lightning-layout-item-->
+
+        <!-- Click on View PDF button pdf will in new tab -->
+        <!-- <lightning-layout-item>
+            <lightning-button label="View PDF" onclick={handleGeneratePDF} variant="base"></lightning-button>
+        </lightning-layout-item> -->
+    </lightning-layout>
+    </lightning-card>
+</template>

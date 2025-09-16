@@ -1,0 +1,9 @@
+<template>
+    <ul>
+        <template for:each={customDataList} for:item="contact">
+            <li key={contact.Id}>
+                <p>{contact.FirstName}</p>
+            </li>
+        </template>
+    </ul>
+</template>

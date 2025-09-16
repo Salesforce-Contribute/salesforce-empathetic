@@ -1,0 +1,39 @@
+<template >
+    <lightning-quick-action-panel header="Table Pagination using SOQL OFFSET">
+      
+        <div class="slds-list_horizontal">
+          <lightning-input class="slds-p-bottom_large" type="number" minlength="1" maxlength={totalPage} placeholder="Enter page number" value={pageNumber} onchange={pageNumberHandler}></lightning-input>
+          <lightning-button label="Go" onclick={goToPageHandler} style="margin-top:20px;"></lightning-button>
+        </div>  
+
+      <div class="slds-m-around_none">
+        <lightning-datatable data-id="datatable" key-field="Id" data={dataList} columns={columns} suppress-bottom-bar="false">
+        </lightning-datatable>
+      </div>
+      
+      <div slot="footer">
+        <!--  Pagination Start -->
+        <div class="slds-align_absolute-center">
+           
+          <lightning-button label="First" icon-name="utility:jump_to_left" onclick={firstPageHandler} disabled={isPreviousDisable}></lightning-button>
+          <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler} disabled={isPreviousDisable}></lightning-button>
+        
+          <span class="slds-badge slds-badge_lightest" style="margin-right: 10px;margin-left: 10px;">
+            Displaying {startingRecord} to {endingRecord} of {totalRecountCount} records. Page {page} of {totalPage}.
+          </span>
+          
+          <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right" onclick={nextHandler} disabled={isNextDisable}></lightning-button>
+          <lightning-button label="Last" icon-name="utility:jump_to_right" onclick={lastPageHandler} disabled={isNextDisable}></lightning-button>
+          
+          <div style="margin-left: 2em;">
+            <lightning-button variant="neutral" label="Cancel" onclick={handleClose}></lightning-button>
+          <lightning-button variant="brand" label="Save" class="slds-m-left_x-small" onclick={handleSave}></lightning-button>
+          </div>
+  
+        </div>
+        <!--  Pagination End -->
+      </div>
+  
+    </lightning-quick-action-panel>
+    
+  </template>

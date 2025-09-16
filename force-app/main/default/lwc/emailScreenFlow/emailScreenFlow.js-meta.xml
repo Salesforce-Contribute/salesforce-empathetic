@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+        <target>lightning__HomePage</target>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="useremail" type="String" default="" description="Email Operator Email" role="inputOnly"/>
+            <property name="subject" type="String" default="" description="Email Subject" role="inputOnly"/>
+            <property name="username" type="String" default="" description="Operator Name" role="inputOnly"/>
+            <property name="isEditMode" type="Boolean" default="false" description="Start in edit mode"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

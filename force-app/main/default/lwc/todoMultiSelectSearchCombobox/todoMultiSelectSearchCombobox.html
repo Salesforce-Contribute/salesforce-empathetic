@@ -1,0 +1,48 @@
+<template>
+    <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox" onmouseleave={handleleave}>
+        <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+            <!-- <div style="display: flex; margin: 0px 0px -25px 0px;"> -->
+            <lightning-input label={picklistlabel} type="search" id="combobox-id-5" aria-controls="listbox-id-5" role="combobox" placeholder="Search an options" value={search} onchange={changeOptionsHandler} onkeyup={keyupOptionsHandler} onclick={handleShowdropdown} onfocusin={focusIn}></lightning-input>
+            <!-- <lightning-button variant="brand" label="Search" onclick={searchSelected} style="margin: 24px 5px;"></lightning-button> -->
+            <!-- </div> -->
+            <template if:true={showdropdown}>
+                <div id="listbox-id-5" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox" style="margin-top: -3px;">
+                    <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                        <template for:each={options} for:item="eachvalue">
+                            <c-picklist-value key={eachvalue.label} label={eachvalue.label} value={eachvalue.value} selected={eachvalue.selected} onclick={handleSelected}></c-picklist-value>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+
+        <template lwc:if={isOptAvl}>
+                <template lwc:if={ismore}>
+                    <div class="slds-scrollable_x " style="border: 1px solid rgb(153, 153, 153);">
+                        <div class={showMoreClass}>
+                            <ul class="slds-listbox slds-listbox_horizontal" aria-label="Selected Options:" >
+                            <template for:each={selectedvalues} for:item="option">
+                                <li class="slds-listbox-item slds-m-around_xxx-small" key={option}>
+                                    <span class="slds-pill">
+                                        <span class="slds-pill__label slds-m-left_xx-small" title={option}>{option}</span>
+                                        <span class="slds-icon_container slds-pill__remove" title="Remove">
+                                            <lightning-icon icon-name="utility:close" variant="error" size="x-small" aria-hidden="true" alternative-text="Remove" title="Remove" onclick={closePill} data-selected-value={option}></lightning-icon>
+                                            <span class="slds-assistive-text">Click to remove</span>
+                                        </span>
+                                    </span>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </template>
+        </template>
+
+        <template lwc:if={isOptAvl}>
+            <span class="slds-listbox-toggle">
+                <button class="slds-button slds-float_right" tabindex="-1" onclick={disiplayMore}>{buttonLabel} ({selectedSize})</button>
+            </span>
+        </template>
+
+    </div>
+</template>

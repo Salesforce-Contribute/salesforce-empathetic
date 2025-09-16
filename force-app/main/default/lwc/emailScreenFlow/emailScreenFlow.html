@@ -1,0 +1,35 @@
+<template>
+    <div class="slds-card">
+        <!-- Header with buttons -->
+        <div class="slds-grid slds-grid_align-spread slds-m-bottom_medium">
+            <div class="slds-col"></div>
+            <div class="slds-col slds-no-flex button-group">
+                <lightning-button label={editButtonText} variant="neutral" onclick={handleEditClick} class="slds-m-right_x-small"></lightning-button>
+                <template lwc:if={showSaveButton}>
+                    <lightning-button label="Save" variant="brand" onclick={handleSaveClick} class="slds-m-right_x-small"></lightning-button>
+                </template>
+                <template lwc:else>
+                    <lightning-button label="Send Email" variant="brand" onclick={handleSendEmail}></lightning-button>
+                </template>
+            </div>
+        </div>
+
+        <!-- Edit Mode - Rich Text Editor -->
+        <template if:true={showRichTextEditor}>
+            <div class="slds-m-bottom_medium">
+                <lightning-input type="email" label="To" value={useremail} disabled={editMode}></lightning-input>
+                <lightning-input type="text" class="slds-m-bottom_small" label="Subject" value={subject}  disabled={editMode}></lightning-input>
+                <lightning-input-rich-text formats={allowedFormats} label="Email Body" value={body} onchange={handleBodyChange}></lightning-input-rich-text>
+            </div>
+        </template>
+
+        <!-- Display Mode - Read-only view -->
+        <template if:true={showDisplayMode}>
+            <div class="slds-m-top_small slds-box">
+                <template lwc:if={body}>
+                    <lightning-formatted-rich-text value={body}></lightning-formatted-rich-text>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Child Controls" icon-name="action:upload">
+        <lightning-layout>
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-button label="Add" onclick={handleAdd}></lightning-button>
+            </lightning-layout-item>
+            
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-button label="2" data-factor="2" icon-name="utility:close" onclick={handleMultiply}></lightning-button>
+            </lightning-layout-item>
+
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-button label="3" data-factor="3" icon-name="utility:close" onclick={handleMultiply}></lightning-button>
+            </lightning-layout-item>
+
+            <lightning-layout-item flexibility="auto" padding="around-small">
+                <lightning-button label="Sub" onclick={handleSubtract}></lightning-button>
+            </lightning-layout-item>
+
+            
+        </lightning-layout>
+        <lightning-layout-item flexibility="auto" padding="around-small">
+            
+            <template for:each={factors} for:item="factor">
+              <c-button key={factor} label={factor} data-factor={factor}             icon="utility:close"  onbuttonclick={handleMultiply}>
+              </c-button>
+            </template>
+          </lightning-layout-item>
+    </lightning-card>
+
+</template>

@@ -1,0 +1,22 @@
+<template>
+   <lightning-card class="slds-p-around_x-small" title="Flow Form">
+
+    <lightning-input type="text" label="Enter some text" value={dataobject.username} onchange={handleInput}></lightning-input>
+    <br />
+    <ul>
+        <template for:each={dataobject.toggleList} for:item="list">
+        <li key={list.Id}>
+            <lightning-input type="toggle" data-id={list.Id} message-toggle-active="" message-toggle-inactive="" name={list.LastName} label={list.Email} onchange={handleToggle} checked={list.isSelected}></lightning-input>
+        </li>
+        </template>
+    </ul>
+    <br />
+    <lightning-input type="radio" label="Male" checked={dataobject.isMale} onchange={handleIsMale}></lightning-input>
+    <lightning-input type="radio" label="Female" checked={dataobject.isFemale} onchange={handleIsFemale}></lightning-input>
+    <lightning-input type="radio" label="Other" checked={dataobject.isOther} onchange={handleIsOther}></lightning-input>
+    <br />
+    <lightning-button variant="brand" label="Submit" onclick={requestFinishFlow}></lightning-button>
+     
+
+</lightning-card>
+</template>

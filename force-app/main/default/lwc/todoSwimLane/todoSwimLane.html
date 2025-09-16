@@ -1,0 +1,19 @@
+<template>
+    <div class="slds-clearfix fixed-header" style="padding:0.5rem;background:#e8e8e8;">
+        <div class="slds-float_left">
+            <p class="slds-text-title_bold">{stage}: ({size})</p>
+        </div>
+        <div class="slds-float_right">
+            <lightning-button-icon icon-name="utility:new" data-target-id={stage} variant="border-filled" alternative-text="Create new" onclick={newTaskHandler}></lightning-button-icon>
+        </div>
+    </div>
+
+    <c-todo-create-task open-new-task={isOpen} oncancel={cancelHanlder} onsave={saveHandler} stage={stage}></c-todo-create-task>
+
+    
+    <template for:each={todoData} for:item="todo" for:index="index">
+        <div key={todo.Id} class="slds-p-around_small" ondrop={handleDrop} ondragover={handleDragOver}>
+            <c-todo-list item={todo} stage={stage} onitemdrag={handleItemDrag}></c-todo-list>
+        </div>
+    </template>
+</template>

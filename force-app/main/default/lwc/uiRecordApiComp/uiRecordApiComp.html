@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="Use lightning/uiRecordApi" icon-name="standard:record">
+       <div class="slds-m-around_medium">
+
+        <lightning-layout>
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-input label="Book name" onchange={handleNameChange} value={name} data-field="Name" class="slds-m-bottom_x-small"></lightning-input>
+                <lightning-input label="Book price" onchange={handlePriceChange} value={price} data-field="Price__c" class="slds-m-bottom_x-small"></lightning-input>
+                
+                <lightning-button label="Create Book" onclick={createBookRecord}></lightning-button>
+
+                <lightning-record-form object-api-name="Book__c" fields={} onsuccess={createBookRecord}>
+
+                </lightning-record-form>
+            </lightning-layout-item>
+
+            <lightning-layout-item padding="around-small" size="6">
+                <lightning-datatable key-field="Id" data={books} columns={columns} onsave={handleSave} draft-values={draftValues} oncellchange={onChangeTable} onrowaction={handleRowAction}></lightning-datatable>
+            </lightning-layout-item>
+        </lightning-layout>
+       </div>
+    </lightning-card>
+</template>

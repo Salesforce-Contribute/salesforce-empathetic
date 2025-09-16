@@ -1,0 +1,183 @@
+<template>
+    <lightning-quick-action-panel>
+        <div class="slds-p-around_medium">
+            <lightning-card>
+                <!-- Header -->
+                <div slot="header" class="slds-p-horizontal_medium">
+                    <div class="slds-grid slds-grid_align-center">
+                        <div class="slds-col slds-size_1-of-1">
+                            <h2 class="slds-text-heading_medium slds-text-align_center">
+                                Multi-Screen Wizard - Step {currentScreen} of 5
+                            </h2>
+                            <div class="slds-progress-bar slds-m-top_small">
+                                <div class="slds-progress-bar__value" style={progressBarStyle}></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Screen Content -->
+                <div class="slds-p-around_medium">
+                    <!-- Screen 1: Basic Information -->
+                    <template if:true={isScreen1}>
+                        <div class="slds-text-heading_small slds-m-bottom_medium">Basic Information</div>
+                        <lightning-input 
+                            label="First Name" 
+                            value={firstName} 
+                            onchange={handleFirstNameChange}
+                            required>
+                        </lightning-input>
+                        <lightning-input 
+                            label="Last Name" 
+                            value={lastName} 
+                            onchange={handleLastNameChange}
+                            required>
+                        </lightning-input>
+                        <lightning-input 
+                            type="email" 
+                            label="Email" 
+                            value={email} 
+                            onchange={handleEmailChange}
+                            required>
+                        </lightning-input>
+                    </template>
+
+                    <!-- Screen 2: Contact Details -->
+                    <template if:true={isScreen2}>
+                        <div class="slds-text-heading_small slds-m-bottom_medium">Contact Details</div>
+                        <lightning-input 
+                            type="tel" 
+                            label="Phone Number" 
+                            value={phone} 
+                            onchange={handlePhoneChange}>
+                        </lightning-input>
+                        <lightning-input 
+                            label="Company" 
+                            value={company} 
+                            onchange={handleCompanyChange}>
+                        </lightning-input>
+                        <lightning-input 
+                            label="Job Title" 
+                            value={jobTitle} 
+                            onchange={handleJobTitleChange}>
+                        </lightning-input>
+                    </template>
+
+                    <!-- Screen 3: Address Information -->
+                    <template if:true={isScreen3}>
+                        <div class="slds-text-heading_small slds-m-bottom_medium">Address Information</div>
+                        <lightning-input 
+                            label="Street Address" 
+                            value={streetAddress} 
+                            onchange={handleStreetAddressChange}>
+                        </lightning-input>
+                        <lightning-input 
+                            label="City" 
+                            value={city} 
+                            onchange={handleCityChange}>
+                        </lightning-input>
+                        <lightning-input 
+                            label="State/Province" 
+                            value={state} 
+                            onchange={handleStateChange}>
+                        </lightning-input>
+                        <lightning-input 
+                            label="Postal Code" 
+                            value={postalCode} 
+                            onchange={handlePostalCodeChange}>
+                        </lightning-input>
+                    </template>
+
+                    <!-- Screen 4: Preferences -->
+                    <template if:true={isScreen4}>
+                        <div class="slds-text-heading_small slds-m-bottom_medium">Preferences</div>
+                        <lightning-combobox 
+                            label="Preferred Contact Method" 
+                            value={preferredContact} 
+                            options={contactOptions} 
+                            onchange={handlePreferredContactChange}>
+                        </lightning-combobox>
+                        <lightning-combobox 
+                            label="Priority Level" 
+                            value={priority} 
+                            options={priorityOptions} 
+                            onchange={handlePriorityChange}
+                            required>
+                        </lightning-combobox>
+                        <lightning-textarea 
+                            label="Additional Notes" 
+                            value={notes} 
+                            onchange={handleNotesChange}
+                            rows="3">
+                        </lightning-textarea>
+                    </template>
+
+                    <!-- Screen 5: Review & Submit -->
+                    <template if:true={isScreen5}>
+                        <div class="slds-text-heading_small slds-m-bottom_medium">Review & Submit</div>
+                        <div class="slds-box slds-theme_default">
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>First Name:</strong> {firstName}
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>Last Name:</strong> {lastName}
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>Email:</strong> {email}
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>Phone:</strong> {phone}
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>Company:</strong> {company}
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>Job Title:</strong> {jobTitle}
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>Priority:</strong> {priority}
+                                </div>
+                                <div class="slds-col slds-size_1-of-2 slds-p-horizontal_small">
+                                    <strong>Preferred Contact:</strong> {preferredContact}
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Footer -->
+                <div slot="footer" class="slds-p-horizontal_medium slds-p-vertical_medium">
+                    <div class="slds-grid slds-grid_align-spread">
+                        <div class="slds-col">
+                            <lightning-button 
+                                label="Previous" 
+                                variant="neutral" 
+                                onclick={handlePrevious}
+                                disabled={isPreviousDisabled}>
+                            </lightning-button>
+                        </div>
+                        <div class="slds-col slds-text-align_right">
+                            <template if:true={isLastScreen}>
+                                <lightning-button 
+                                    label="Submit" 
+                                    variant="brand" 
+                                    onclick={handleSubmit}
+                                    disabled={isSubmitDisabled}>
+                                </lightning-button>
+                            </template>
+                            <template if:false={isLastScreen}>
+                                <lightning-button 
+                                    label="Next" 
+                                    variant="brand" 
+                                    onclick={handleNext}
+                                    disabled={isNextDisabled}>
+                                </lightning-button>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </lightning-card>
+        </div>
+    </lightning-quick-action-panel>
+</template>

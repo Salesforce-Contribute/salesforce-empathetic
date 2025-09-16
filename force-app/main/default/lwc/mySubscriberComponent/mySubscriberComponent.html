@@ -1,0 +1,11 @@
+<template>
+<lightning-card title="LMS Subscriber LWC">
+    <lightning-layout class="slds-p-around_x-small">
+        <lightning-layout-item size="12">
+                <lightning-button class="slds-m-right_xx-small" label="Subscribe" onclick={subscribeMessageChannel}></lightning-button>  
+                <lightning-button class="slds-m-right_xx-small" label="Unsubscribe" onclick={unSubscribeMessageChannel}></lightning-button>
+                <lightning-textarea label="Recieved Message" readonly="true" value={receivedMessage} rows="4"></lightning-textarea>      
+        </lightning-layout-item>
+    </lightning-layout>
+</lightning-card>
+</template>

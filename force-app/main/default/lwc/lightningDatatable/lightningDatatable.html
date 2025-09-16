@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="lightningDatatable">
+    <div style="width: 100%;" class="slds-p-around_medium lgc-bg">
+        <lightning-datatable 
+        data-id="datatable" 
+        key-field="Id" 
+        data={data} 
+        columns={columns} 
+        min-column-width="150" 
+        max-column-width="800" 
+        onrowaction={handleRowAction} onrowselection={handleRowSelection} max-row-selection="3"></lightning-datatable>
+        <!-- <lightning-datatable data-id="datatable" key-field="Id" data={data} columns={columns} ></lightning-datatable> -->
+    </div>
+
+</lightning-card>
+
+<lightning-card title="Api Callout">
+    <div style="width: 100%;" class="slds-p-around_medium lgc-bg">
+        <lightning-datatable data-id="datatable" key-field="id" data={apiData} columns={apiColumns} ></lightning-datatable>
+    </div>
+</lightning-card>
+</template>

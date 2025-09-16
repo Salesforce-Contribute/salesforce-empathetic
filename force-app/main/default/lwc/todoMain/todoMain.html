@@ -1,0 +1,138 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <lightning-layout-item size="12">
+            <!-- <c-bpm-manager-header onsearch={applyFilter} onclearsearch={reinitializeData} todo-size={totalTodoSize}></c-bpm-manager-header> -->
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading"></lightning-spinner>
+    </template>
+    <template if:false={isLoading}>
+        
+        <lightning-layout class="slds-m-top_small slds-scrollable slds-p-around_small" vertical-align="stretch" style="background-color: rgb(255, 255, 255); border-radius:5px;">
+            <template for:each={state} for:item="state">
+            <lightning-layout-item key={state} size="3" class="slds-scrollable slds-m-around_xx-small" data-swim-lane="waiting" style="background:rgb(255, 255, 255); border-radius:5px; border:1px solid rgb(222, 222, 222);">
+                    <c-todo-swim-lane todo-data={todoDataList} stage={state} onlistitemdrag={handleListItemDrag} onitemdrop={handleItemDrop}></c-todo-swim-lane>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+
+        <!--lightning-layout class="slds-m-top_small slds-scrollable slds-p-around_small" vertical-align="stretch" style="background-color: rgb(255, 255, 255); border-radius:5px;">
+
+            <lightning-layout-item size="3" class="slds-scrollable slds-m-around_xx-small" data-swim-lane="waiting" style="background:rgb(246, 245, 248); border-radius:5px;">
+            
+                <div class="slds-clearfix fixed-header" style="padding:0.5rem;background:#e8e8e8;">
+                    <div class="slds-float_left">
+                        <p class="slds-text-title_bold">WAITING: ({waitingListSize})</p>
+                    </div>
+                    <div class="slds-float_right">
+                        <lightning-button-icon icon-name="utility:new" data-target-id="btn-waiting" variant="border-filled" alternative-text="Create Task" onclick={newTaskHandler}></lightning-button-icon>
+                    </div>
+                </div>
+
+                <template lwc:if={createWaiting}>
+                    <c-bpm-manager-create-new-task oncancel={cancelHanlder} onsave={saveHandler} task-list-name="waiting"></c-bpm-manager-create-new-task>
+                </template>
+                
+                <template for:each={waitingStateList} for:item="todo" for:index="index">
+                    <div key={todo.processTaskId} class="slds-p-around_small" >
+                        <c-bpm-manager-item item={todo} data-task-id={todo.processTaskId} data-task-state={todo.state} onupdate={updateHandler} ondelete={deleteHandler}></c-bpm-manager-item>
+                    </div>
+                </template>
+
+            </lightning-layout-item>
+
+            <lightning-layout-item size="3" class="slds-scrollable slds-m-around_xx-small" data-swim-lane="working" style="background:rgb(246, 245, 248); border-radius:5px;">
+                <div class="slds-clearfix fixed-header" style="padding:0.5rem;background:#e8e8e8">
+                    <div class="slds-float_left">
+                        <p class="slds-text-title_bold">WORKING: ({workingListSize})</p>
+                    </div>
+                    <div class="slds-float_right">
+                        <lightning-button-icon icon-name="utility:new" data-target-id="btn-working" variant="border-filled" alternative-text="Create Task" onclick={newTaskHandler}></lightning-button-icon>
+                    </div>
+                </div>
+
+                <template lwc:if={createWorking}>
+                    <c-bpm-manager-create-new-task oncancel={cancelHanlder} onsave={saveHandler} task-list-name="working"></c-bpm-manager-create-new-task>
+                </template>
+
+                <template for:each={workingStateList} for:item="todo" for:index="index">
+                    <div key={todo.processTaskId} class="slds-p-around_small">
+                        <c-bpm-manager-item item={todo} data-task-id={todo.processTaskId} data-task-state={todo.state} onupdate={updateHandler} ondelete={deleteHandler}></c-bpm-manager-item>
+                    </div>
+                </template>
+
+            </lightning-layout-item>
+
+            <lightning-layout-item size="3" class="slds-scrollable slds-m-around_xx-small" id="layout-item-complete" style="background:rgb(246, 245, 248); border-radius:5px;">
+                <div class="slds-clearfix fixed-header" style="padding:0.5rem;background:#e8e8e8">
+                    <div class="slds-float_left">
+                        <p class="slds-text-title_bold">COMPLETE ({completeListSize})</p>
+                    </div>
+                    <div class="slds-float_right">
+                        <lightning-button-icon icon-name="utility:new" data-target-id="btn-complete" variant="border-filled" alternative-text="Create Task" onclick={newTaskHandler}></lightning-button-icon>
+                    </div>
+                </div>
+                
+                <template lwc:if={createComplete}>
+                    <c-bpm-manager-create-new-task oncancel={cancelHanlder} onsave={saveHandler} task-list-name="complete"></c-bpm-manager-create-new-task>
+                </template>
+
+                <template for:each={completeStateList} for:item="todo" for:index="index">
+                    <div key={todo.processTaskId} class="slds-p-around_small">
+                        <c-bpm-manager-item item={todo} data-task-id={todo.processTaskId} data-task-state={todo.state} onupdate={updateHandler} ondelete={deleteHandler}></c-bpm-manager-item>
+                    </div>
+                </template>
+
+            </lightning-layout-item>
+
+            <lightning-layout-item size="3" class="slds-scrollable slds-m-around_xx-small" id="layout-item-exception" style="background:rgb(246, 245, 248); border-radius:5px;">
+                <div class="slds-clearfix fixed-header" style="padding:0.5rem;background:#e8e8e8">
+                    <div class="slds-float_left">
+                        <p class="slds-text-title_bold">EXCEPTION ({exceptionListSize})</p>
+                    </div>
+                    <div class="slds-float_right">
+                        <lightning-button-icon icon-name="utility:new" data-target-id="btn-exception" variant="border-filled" alternative-text="Create Task" onclick={newTaskHandler}></lightning-button-icon>
+                    </div>
+                </div>
+                
+                <template lwc:if={createException}>
+                    <c-bpm-manager-create-new-task oncancel={cancelHanlder} onsave={saveHandler} task-list-name="exception"></c-bpm-manager-create-new-task>
+                </template>
+
+                <template for:each={exceptionStateList} for:item="todo" for:index="index">
+                    <div key={todo.processTaskId} class="slds-p-around_small">
+                        <c-bpm-manager-item item={todo} data-task-id={todo.processTaskId} data-task-state={todo.state} onupdate={updateHandler} ondelete={deleteHandler}></c-bpm-manager-item>
+                    </div>
+                </template>
+
+            </lightning-layout-item>
+
+            <lightning-layout-item size="3" class="slds-scrollable slds-m-around_xx-small" id="layout-item-undefined" style="background:rgb(246, 245, 248); border:1px solid gray; border-radius:5px;">
+                <div class="slds-clearfix fixed-header" style="padding:0.5rem;background:#e8e8e8">
+                    <div class="slds-float_left">
+                        <p class="slds-text-title_bold">UNDEFINED ({undefinedListSize})</p>
+                    </div>
+                    <div class="slds-float_right">
+                        <lightning-button-icon icon-name="utility:new" data-target-id="btn-undefined" variant="border-filled" alternative-text="Create Task" onclick={newTaskHandler}></lightning-button-icon>
+                    </div>
+                </div>
+
+
+                <template lwc:if={createUndefined}>
+                    <c-bpm-manager-create-new-task oncancel={cancelHanlder} onsave={saveHandler} task-list-name="undefined"></c-bpm-manager-create-new-task>
+                </template>
+
+                <template for:each={undefinedStateList} for:item="todo" for:index="index">
+                    <div key={todo.processTaskId} class="slds-p-around_small">
+                        <c-bpm-manager-item item={todo} data-task-id={todo.processTaskId} data-task-state={todo.state} onupdate={updateHandler} ondelete={deleteHandler}></c-bpm-manager-item>
+                    </div>
+                </template>
+
+            </lightning-layout-item>
+
+        </lightning-layout-->
+    </template>
+
+</template>

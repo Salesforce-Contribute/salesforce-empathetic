@@ -1,0 +1,29 @@
+<template>
+    <lightning-card>
+            <div class="slds-m-around_small">
+
+                <lightning-record-picker
+        label="Select Account"
+        object-api-name="Account"
+        value={selectedRecordId}
+        onselectionchange={handleSelectionChange}>
+    </lightning-record-picker>
+    <lightning-button
+        label="Clear"
+        onclick={handleClear}>
+    </lightning-button>
+    
+                <lightning-record-picker object-api-name="Contact" label="Contacts" ></lightning-record-picker>
+                <br />
+                <lightning-record-picker object-api-name="Contact" label="Search with 'display info'" display-info={displayInfo}></lightning-record-picker>
+                <br/>
+                <lightning-record-picker object-api-name="Contact" label="Search with 'matching info'" matching-info={matchingInfo}></lightning-record-picker>
+                <br/>
+                <lightning-record-picker object-api-name="Account" label="Search with 'filter'" filter={filter}></lightning-record-picker>
+                <br/>
+                <lightning-record-picker object-api-name="Account" label="Search with 'filter by date'" filter={filter}></lightning-record-picker>
+                <br/>
+                <lightning-record-picker object-api-name="Contact" label="Custom Events" onchange={changeCustomEvent} onerror={errorCustomEvent}></lightning-record-picker>
+            </div>
+        </lightning-card>
+</template>

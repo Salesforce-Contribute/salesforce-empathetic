@@ -1,0 +1,20 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="DatatableController">
+     
+    <!-- Including lightning:messageChannel makes it available to publish to from this component -->
+    <lightning:messageChannel type="messageService__c" aura:id="messageChannel"/>
+    
+    <aura:attribute name="contactList" type="Contact[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />   
+    
+    <lightning:card title="LMS Publisher Aura">
+        <aura:set attribute="actions"> <span class="aura">Aura Component</span></aura:set>
+	
+        <div class="slds-m-around_medium" >
+            <aura:if isTrue="{!v.contactList}">
+               	<aura:iteration items="{!v.contactList}" var="con">
+                    <button data-contact-id="{!con.Id}" onclick="{!c.publicMessageService}">{!con.LastName}</button>
+                </aura:iteration>
+            </aura:if>
+        </div>
+        </lightning:card>
+</aura:component>

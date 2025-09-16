@@ -1,0 +1,23 @@
+<template>
+    
+
+    <template if:true={isSameStage}>
+        <template lwc:if={isEdit}>
+            <c-create-new-task open-new-task={isEdit} oncancel={cancelHanlder} onsave={saveHandler} task-list-name={item.StageName}></c-create-new-task>
+        </template>
+        <template lwc:else>
+            <lightning-card title={item.Name} draggable="true" ondragstart={itemDragStart}>
+                <lightning-button-group slot="actions">
+                    <lightning-button-icon icon-name="utility:record_create" variant="border-filled" alternative-text="Create"></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:edit" variant="border-filled" alternative-text="Update" onclick={updateHandler}></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:delete" variant="border-filled" alternative-text="Delete" onclick={deleteHandler}></lightning-button-icon>
+                </lightning-button-group>
+                <div class="slds-m-left_medium">
+                    <p>Id: {item.Id}</p>
+                    <p>Amount: ${item.Amount}</p>
+                    <p>Stage: {item.StageName}</p>
+                </div>
+            </lightning-card>
+        </template>
+    </template>
+</template>

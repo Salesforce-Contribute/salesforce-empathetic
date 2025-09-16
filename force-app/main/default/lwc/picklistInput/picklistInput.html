@@ -1,0 +1,28 @@
+<template>
+    <div class="slds-card">
+        <div class="slds-card__body slds-card__body_inner ">
+            <div class=" slds-align_absolute-center">
+                <p>Status:
+                    <template lwc:if={selectedValue}> {selectedValue}</template>
+                    <template lwc:else> {noSelectedMsg}</template>
+                </p>
+            </div>
+            
+            <div class="slds-align_absolute-center ">
+                <label style="margin-top:1.2em; margin-right:1em;">Select Scheduler: </label>
+                <div class="slds-combobox_container slds-size_small">
+                    <lightning-combobox name="status" value={value}
+                    onchange={handleOnChange} options={options}>
+                    </lightning-combobox>
+                </div>
+            </div>
+                
+
+            <footer class="slds-align_absolute-center slds-p-top_medium">
+                <button class="slds-button slds-button_neutral" onclick={handleStartScheduler}>Start Sheduler</button>
+                <button class="slds-button slds-button_neutral" onclick={handleStopScheduler}>Stop Sheduler</button>
+            </footer>
+
+        </div>
+    </div>
+</template>

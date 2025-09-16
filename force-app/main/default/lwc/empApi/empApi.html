@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="lightning/empApi" icon-name="custom:custom14">
+
+        <lightning-layout class="slds-m-around_medium">
+            <lightning-layout-item padding="around_small" size="10">
+                <p>Subscribe and unsubscribe to a streaming channel!</p>
+                <lightning-input label="Channel Name" value={channelName} onblur={handleChannelName} ></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around_small" size="2" style="margin-top:42px">
+                <lightning-button variant={variants} label={labels} title="Subscribe | Unsubscribe" onclick={handleSubscription} class="slds-m-left_x-small"></lightning-button>
+                <lightning-button variant="brand" label="Publish" onclick={handlePublish} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-layout class="slds-m-around_medium">
+            <lightning-layout-item padding="around_small" size="12">
+                <p>Subscription information:</p>
+                <!-- <div class="slds-box">
+                    <pre class="code-box">{result}</pre>
+                </div> -->
+                <!-- <lightning-textarea label="Response status" value={result} ></lightning-textarea> -->
+                 <template for:each={recievedData} for:item="obj">
+                     <!-- <div class="slds-box slds-m-bottom_small" key={obj}>
+                        <pre class="code-box">{obj}</pre>
+                     </div> -->
+                    <p key={obj}>
+                        <lightning-textarea label="Response status" value={obj} ></lightning-textarea>
+                    </p>
+                 </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        
+    </lightning-card>
+</template>

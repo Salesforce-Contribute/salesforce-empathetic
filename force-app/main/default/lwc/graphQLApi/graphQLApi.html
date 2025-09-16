@@ -1,0 +1,58 @@
+<!-- simpleGQL.html -->
+<template>
+  <lightning-card title="Display the Account name">
+    <template lwc:if={results}>
+        <template for:each={results} for:item="acc">
+          <ol class="card-spacer slds-m-around_small" key={acc.Id} >
+            <li>{acc.Name.value}</li>
+          </ol>
+        </template>
+    </template>
+  </lightning-card>
+
+    <!-- Aggregate result -->
+
+  <lightning-card title="Aggregate the GraphQL">
+    <template lwc:if={aggregateResult}>
+      <template for:each={aggregateResult} for:item="res">
+        <div key={res.aggregate} class="slds-m-around_small">
+          Amount Avg: <lightning-badge label={res.aggregate.Amount__c.avg.displayValue} icon-name="utility:moneybag"></lightning-badge>, 
+          Amount Sum: <lightning-badge label={res.aggregate.Amount__c.sum.displayValue} icon-name="utility:money"></lightning-badge>
+        </div>
+      </template>
+    </template>
+  </lightning-card>
+    
+
+    <!-- Reactive variable -->
+
+    <lightning-card title="Filter the GraphQL">
+      <div class="slds-var-m-horizontal_medium">
+        <lightning-combobox name="minAmount" label="Amount" value={minAmount} placeholder="Select a minimum amount" options={minAmounts} onchange={handleMinAmountChange}></lightning-combobox>
+        <lightning-datatable key-field="Id" data={filterResult} columns={columns}></lightning-datatable>
+      </div>
+    </lightning-card>
+
+    <lightning-card title="Fetch multiple objects GraphQL">
+      <div class="slds-var-m-around_medium">
+        <p><strong>Account records: </strong></p>
+        <template lwc:if={accounts}>
+          <template for:each={accounts} for:item="acc">
+            <p key={acc.Id}>{acc.Name} | {acc.Industry}</p>
+          </template>
+        </template>
+        <p><strong>Case records: </strong></p>
+        <template lwc:if={cases}>
+          <template for:each={cases} for:item="cs">
+            <p key={cs.Id}>{cs.AccountId} | {cs.Priority}</p>
+          </template>
+        </template>
+  
+        <template lwc:elseif={queryError}>
+          <p>{queryError}</p>
+        </template>
+      </div>
+    </lightning-card>
+
+
+  </template>

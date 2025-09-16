@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Account Record Create Form" icon-name="standard:account">
+        <div class="slds-var-p-around_x-small">
+            <lightning-input value={recAccount.Name} label="Account Name" onchange={handelNamechange}></lightning-input>
+            <lightning-input value={recAccount.Phone} label="Phone" onchange={handelPhonechange}></lightning-input>
+            <lightning-input value={recAccount.Rating} label="Rating" onchange={handelRatingchange}></lightning-input>
+            <lightning-input value={recAccount.Industry} label="Industry" onchange={handelinduschange}></lightning-input>
+            <br/>
+            <lightning-button label="Create Record" onclick={createAccRec} variant="brand"></lightning-button>
+        </div>
+    </lightning-card>
+</template>
