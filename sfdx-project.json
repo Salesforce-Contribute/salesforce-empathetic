@@ -2,11 +2,19 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "AppPackage",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": ""
     }
   ],
   "name": "salesforce-empathetic",
-  "namespace": "",
+  "namespace": "mindful_impala",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "64.0"
+  "sourceApiVersion": "64.0",
+  "packageAliases": {
+    "AppPackage": "0HoIg000000PAudKAG",
+    "AppPackage@0.1.0-1": "04tIg0000000SfCIAU"
+  }
 }
