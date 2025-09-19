@@ -3,18 +3,20 @@
     {
       "path": "force-app",
       "default": true,
-      "package": "FirstPackage",
+      "package": "FirstAppPackage",
       "versionName": "ver 0.1",
-      "versionNumber": "0.1.0.NEXT",
+      "ancestorId": "04tIg0000000SfgIAE",
+      "versionNumber": "0.2.0.NEXT",
       "versionDescription": ""
     }
   ],
   "name": "my-app",
   "namespace": "mindful_impala",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "64.0",
+  "sourceApiVersion": "58.0",
   "packageAliases": {
-    "FirstPackage": "0HoIg000000PAuiKAG",
-    "FirstPackage@0.1.0-1": "04tIg0000000SfWIAU"
+    "FirstAppPackage": "0HoIg000000PAunKAG",
+    "FirstAppPackage@0.1.0-1": "04tIg0000000SfgIAE",
+    "FirstAppPackage@0.2.0-1": "04tIg0000000SflIAE"
   }
 }
