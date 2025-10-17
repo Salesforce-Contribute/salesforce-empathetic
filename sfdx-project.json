@@ -3,20 +3,18 @@
     {
       "path": "force-app",
       "default": true,
-      "package": "FirstAppPackage",
+      "package": "Test Manage V1",
       "versionName": "ver 0.1",
-      "ancestorId": "04tIg0000000SfgIAE",
-      "versionNumber": "0.2.0.NEXT",
+      "versionNumber": "0.1.0.NEXT",
       "versionDescription": ""
     }
   ],
-  "name": "my-app",
+  "name": "salesforce-empathetic",
   "namespace": "mindful_impala",
   "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "58.0",
   "packageAliases": {
-    "FirstAppPackage": "0HoIg000000PAunKAG",
-    "FirstAppPackage@0.1.0-1": "04tIg0000000SfgIAE",
-    "FirstAppPackage@0.2.0-1": "04tIg0000000SflIAE"
+    "Test Manage V1": "0HoIg000000PAuxKAG",
+    "Test Manage V1@0.1.0-1": "04tIg0000000SrPIAU"
   }
 }
