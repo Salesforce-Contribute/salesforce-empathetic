@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>Contact.Amount__c</members>
+        <members>Contact.State__c</members>
+        <members>Contact.Temperature__c</members>
         <name>CustomField</name>
     </types>
     <types>
-        <members>Contact.Amount_Calc__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>Contact.Contact_Type__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>Contact_Read</members>
+        <members>Contact_Edit</members>
         <name>PermissionSet</name>
     </types>
     <version>65.0</version>

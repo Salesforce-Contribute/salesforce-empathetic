@@ -1,9 +1,17 @@
 {
   "packageDirectories": [
     {
+      "path": "manage-app",
+      "default": false,
+      "package": "Test Manage V1",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": ""
+    },
+    {
       "path": "force-app",
       "default": true,
-      "package": "Test Manage V1",
+      "package": "Test Unlock V1",
       "versionName": "ver 0.1",
       "versionNumber": "0.1.0.NEXT",
       "versionDescription": ""
@@ -15,6 +23,8 @@
   "sourceApiVersion": "58.0",
   "packageAliases": {
     "Test Manage V1": "0HoIg000000PAuxKAG",
-    "Test Manage V1@0.1.0-1": "04tIg0000000SrPIAU"
+    "Test Manage V1@0.1.0-1": "04tIg0000000SrPIAU",
+    "Test Unlock V1": "0HoIg000000PAv7KAG",
+    "Test Unlock V1@0.1.0-1": "04tIg0000000SryIAE"
   }
 }
