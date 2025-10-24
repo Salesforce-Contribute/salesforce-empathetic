@@ -10,7 +10,11 @@
     },
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "Test Unlock V1",
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "versionDescription": ""
     }
   ],
   "name": "salesforce-empathetic",
@@ -19,6 +23,8 @@
   "sourceApiVersion": "58.0",
   "packageAliases": {
     "Test Manage V1": "0HoIg000000PAuxKAG",
-    "Test Manage V1@0.1.0-1": "04tIg0000000SrPIAU"
+    "Test Manage V1@0.1.0-1": "04tIg0000000SrPIAU",
+    "Test Unlock V1": "0HoIg000000PAvCKAW",
+    "Test Unlock V1@0.1.0-1": "04tIg0000000SshIAE"
   }
 }
